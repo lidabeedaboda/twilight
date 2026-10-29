@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f5f8">
+  <meta name="description" content="Twilight Designs — stickers, 3D printing, and thoughtful custom creations. Coming soon.">
+  <title>Twilight Designs | Coming Soon</title>
+  <style>
+    :root {
+      --ink: #292532;
+      --muted: #716a7b;
+      --lavender: #a99abf;
+      --lavender-dark: #817094;
+      --paper: #fbfafc;
+      --line: rgba(91, 77, 105, .15);
+      --shadow: 0 22px 70px rgba(54, 42, 68, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse at 14% 18%, rgba(207, 194, 222, .36), transparent 34%),
+        radial-gradient(ellipse at 86% 62%, rgba(225, 218, 232, .48), transparent 34%),
+        linear-gradient(135deg, #f7f5f8, #eeebf1 48%, #fbfafc);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .46;
+      background:
+        linear-gradient(117deg, transparent 0 16%, rgba(255,255,255,.8) 16.1% 16.3%, transparent 16.4% 100%),
+        linear-gradient(154deg, transparent 0 42%, rgba(168,154,185,.19) 42.1% 42.25%, transparent 42.4% 100%),
+        linear-gradient(22deg, transparent 0 67%, rgba(255,255,255,.9) 67.1% 67.25%, transparent 67.4% 100%),
+        linear-gradient(171deg, transparent 0 76%, rgba(164,148,182,.16) 76.1% 76.22%, transparent 76.4% 100%);
+      mix-blend-mode: screen;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { position: relative; z-index: 1; }
+    .nav-wrap { padding: 24px clamp(20px, 6vw, 84px); }
+    nav {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.02rem;
+      font-weight: 750;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .brand-mark {
+      width: 37px; height: 37px;
+      display: grid; place-items: center;
+      border: 1px solid rgba(111, 91, 130, .28);
+      border-radius: 50%;
+      background: rgba(255,255,255,.58);
+      color: var(--lavender-dark);
+      font-family: Georgia, serif;
+      font-size: 1.25rem;
+      box-shadow: 0 5px 18px rgba(60,45,75,.07);
+    }
+    .nav-links { display: flex; gap: clamp(18px, 3vw, 38px); align-items: center; }
+    .nav-links a {
+      color: #625b6b;
+      font-size: .88rem;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover { color: var(--lavender-dark); }
+    .nav-cta {
+      border: 1px solid rgba(111,91,130,.32);
+      padding: 11px 17px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.5);
+    }
+    .hero {
+      max-width: 1280px;
+      min-height: min(740px, calc(100vh - 86px));
+      margin: 0 auto;
+      padding: 74px clamp(20px, 6vw, 84px) 92px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: clamp(38px, 7vw, 100px);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--lavender-dark);
+      font-size: .72rem;
+      letter-spacing: .23em;
+      text-transform: uppercase;
+      font-weight: 750;
+    }
+    .eyebrow::before { content: ""; width: 27px; height: 1px; background: var(--lavender-dark); }
+    h1 {
+      font-family: "Iowan Old Style", "Baskerville", "Palatino Linotype", Georgia, serif;
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: .98;
+      font-size: clamp(3.7rem, 7.5vw, 7rem);
+      margin: 25px 0 24px;
+    }
+    h1 span { color: var(--lavender-dark); font-style: italic; }
+    .hero-copy {
+      max-width: 475px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.02rem;
+      margin: 0 0 32px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 49px;
+      padding: 0 23px;
+      border-radius: 999px;
+      font-size: .88rem;
+      font-weight: 650;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary {
+      color: white;
+      background: linear-gradient(135deg, #88769d, #a99abf);
+      box-shadow: 0 10px 25px rgba(122, 100, 147, .24);
+    }
+    .button-secondary { border: 1px solid var(--line); background: rgba(255,255,255,.45); }
+    .hero-note { margin-top: 30px; color: #938a9b; font-size: .76rem; letter-spacing: .04em; }
+    .visual {
+      min-height: 465px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+    .marble-card {
+      position: relative;
+      width: min(100%, 460px);
+      aspect-ratio: .88;
+      border-radius: 48% 48% 38% 38% / 39% 39% 29% 29%;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.85);
+      background:
+        radial-gradient(ellipse at 30% 25%, rgba(255,255,255,.95), transparent 24%),
+        radial-gradient(ellipse at 76% 68%, rgba(191,177,208,.6), transparent 28%),
+        linear-gradient(135deg, #e9e3ee, #faf9fb 38%, #ded6e7 68%, #f8f6f9);
+      box-shadow: 0 35px 90px rgba(71, 54, 91, .17), inset 0 0 0 10px rgba(255,255,255,.24);
+      transform: rotate(3deg);
+    }
+    .marble-card::before, .marble-card::after {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: repeating-linear-gradient(126deg,
+        transparent 0 45px,
+        rgba(255,255,255,.62) 46px 48px,
+        rgba(155,137,177,.18) 49px 51px,
+        transparent 52px 94px);
+      transform: rotate(-13deg);
+      filter: blur(1px);
+    }
+    .marble-card::after {
+      inset: -20%;
+      opacity: .58;
+      background: repeating-linear-gradient(37deg,
+        transparent 0 83px,
+        rgba(255,255,255,.72) 84px 86px,
+        rgba(161,145,180,.18) 87px 88px,
+        transparent 89px 146px);
+      transform: rotate(7deg);
+    }
+    .monogram {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transform: rotate(-3deg);
+      color: #756481;
+    }
+    .moon { font-size: 2.2rem; margin-bottom: 16px; opacity: .85; }
+    .monogram strong {
+      font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      letter-spacing: -.06em;
+    }
+    .monogram small {
+      margin-top: 14px;
+      font-size: .61rem;
+      text-transform: uppercase;
+      letter-spacing: .35em;
+      color: #8c7a9b;
+    }
+    .orbit {
+      position: absolute;
+      width: 115px; height: 115px;
+      border-radius: 50%;
+      border: 1px solid rgba(131,111,151,.3);
+      right: -3px; top: 12%;
+      display: grid; place-items: center;
+      color: #88769d;
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      background: rgba(255,255,255,.42);
+      box-shadow: 0 12px 30px rgba(66,51,83,.08);
+    }
+    .sparkle {
+      position: absolute; color: #a294b5; font-size: 1.5rem;
+    }
+    .sparkle.one { left: 2%; top: 22%; }
+    .sparkle.two { right: 7%; bottom: 12%; font-size: 2rem; }
+    .products {
+      padding: 98px clamp(20px, 6vw, 84px) 112px;
+      border-top: 1px solid rgba(91,77,105,.12);
+      background: rgba(255,255,255,.25);
+      text-align: center;
+    }
+    .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-kicker {
+      color: var(--lavender-dark);
+      font-size: .7rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      font-weight: 750;
+    }
+    h2 {
+      font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(2.7rem, 5vw, 4.5rem);
+      letter-spacing: -.045em;
+      margin: 17px 0 13px;
+    }
+    .section-description { color: var(--muted); line-height: 1.8; margin: 0 auto; max-width: 500px; }
+    .coming-card {
+      max-width: 660px;
+      margin: 42px auto 0;
+      padding: 62px 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.9);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.75), rgba(238,232,243,.62)),
+        repeating-linear-gradient(128deg, transparent 0 72px, rgba(163,146,182,.1) 73px 74px, transparent 75px 132px);
+      box-shadow: var(--shadow);
+    }
+    .coming-icon { color: #9b89ae; font-size: 1.65rem; }
+    .coming-card h3 {
+      font-family: Baskerville, Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -.03em;
+      margin: 14px 0 10px;
+    }
+    .coming-card p { color: var(--muted); margin: 0; font-size: .92rem; }
+    footer {
+      padding: 26px clamp(20px, 6vw, 84px);
+      border-top: 1px solid rgba(91,77,105,.12);
+      color: #8a8292;
+      font-size: .77rem;
+    }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    @media (max-width: 800px) {
+      .nav-wrap { padding-top: 18px; }
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: .8rem; }
+      .nav-cta { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 60px; gap: 24px; }
+      .hero-copy { max-width: 560px; }
+      .visual { min-height: 390px; }
+      .marble-card { width: min(76%, 360px); }
+      .orbit { right: 8%; width: 82px; height: 82px; }
+      .sparkle.one { left: 9%; }
+      .sparkle.two { right: 11%; }
+    }
+    @media (max-width: 460px) {
+      .brand { font-size: .82rem; gap: 8px; letter-spacing: .06em; }
+      .brand-mark { width: 32px; height: 32px; }
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: .75rem; }
+      h1 { font-size: 3.7rem; }
+      .hero { padding-bottom: 60px; }
+      .visual { min-height: 330px; }
+      .coming-card { padding: 48px 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="nav-wrap">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Twilight Designs home">
+          <span class="brand-mark" aria-hidden="true">✧</span>
+          <span>Twilight Designs</span>
+        </a>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#products">Products</a>
+          <a href="#about">About</a>
+        </div>
+        <a class="nav-cta" href="#products">Explore</a>
+      </nav>
+    </div>
+
+    <main>
+      <section class="hero" id="home">
+        <div>
+          <div class="eyebrow">Made with imagination</div>
+          <h1>Little things.<br><span>Beautifully</span><br>made.</h1>
+          <p class="hero-copy">
+            Welcome to Twilight Designs — a creative little corner for stickers,
+            3D printing, and thoughtful designs. Something lovely is taking shape.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#products">Discover what’s next <span aria-hidden="true">&nbsp;↗</span></a>
+            <a class="button button-secondary" href="#about">Our story</a>
+          </div>
+          <p class="hero-note">STICKERS · 3D PRINTING · CREATIVE DESIGN</p>
+        </div>
+
+        <div class="visual" aria-label="Decorative lavender marble design">
+          <span class="sparkle one" aria-hidden="true">✧</span>
+          <div class="marble-card">
+            <div class="monogram">
+              <span class="moon" aria-hidden="true">☾</span>
+              <strong>Twilight</strong>
+              <small>Designs & creations</small>
+            </div>
+          </div>
+          <div class="orbit" aria-hidden="true">✦</div>
+          <span class="sparkle two" aria-hidden="true">✧</span>
+        </div>
+      </section>
+
+      <section class="products" id="products">
+        <div class="section-inner">
+          <div class="section-kicker">The collection</div>
+          <h2>Products</h2>
+          <p class="section-description">A little creativity is on its way. Check back soon to see what’s in the works.</p>
+          <div class="coming-card">
+            <div class="coming-icon" aria-hidden="true">✧</div>
+            <h3>Coming Soon</h3>
+            <p>Something special is being made.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="products" id="about" style="background: transparent; padding-top: 72px; padding-bottom: 78px;">
+        <div class="section-inner">
+          <div class="section-kicker">A little about us</div>
+          <h2>Designed with care.</h2>
+          <p class="section-description">
+            Twilight Designs brings ideas to life through stickers and 3D printing,
+            with a love for clean details, soft tones, and things that feel uniquely yours.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>© <span id="year"></span> Twilight Designs</span>
+        <span>Made with a little twilight magic ✧</span>
+      </div>
+    </footer>
+  </div>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
